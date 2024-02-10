@@ -1,0 +1,18 @@
+{
+  "name": "chai-backend",
+  "version": "1.0.0",
+  "description": "a backend at chai code",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "author": "Sahil Nagpal",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}
