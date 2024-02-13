@@ -1,0 +1,28 @@
+import {v2 as cloudinary} from "cloudinary"
+import fs from "fs"
+          
+cloudinary.config({ 
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME , 
+  api_key: process.env.CLOUDINARY_API-KEY, 
+  api_secret: process.env.CLOUDINARY_API-SECRET, 
+});
+
+const uploadOnCloudinary = async (localFilePath) => {
+    try{
+        if(!localFilePath) return null
+        //upload the file on cloudinary
+
+        const response = await cloudinary.uploader.upload(localFilePath,{
+            resource_type:"auto"
+        })
+        //file has been uploaded successfully
+        console.log("File is uplaoded on cloudinary ", response.url);
+        return response;
+    }
+    catch(error){
+        fs.unlinkSync(localFilePath) // remove the locally saved temporafrfiply file as upload operation got faailed
+        return null;
+    }
+}
+
+export {uploadOnCloudinary}
